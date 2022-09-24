@@ -9,9 +9,10 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Randomorg {
-    private URL url = new URL("https://api.random.org/json-rpc/2/invoke");
+    private final URL url = new URL("https://api.random.org/json-rpc/2/invoke");
     private final String API_KEY;
     private int bitsLeft;
     private int requestsLeft;
@@ -36,7 +37,7 @@ public class Randomorg {
         return requestsLeft;
     }
 
-    public ArrayList<Integer> generateIntegers(int n, int min, int max) throws IOException, RandomorgException {
+    public List<Integer> generateIntegers(int n, int min, int max) throws IOException, RandomorgException {
         IntegersRequest req = new IntegersRequest(API_KEY, n, min, max);
         String jsonInputString = RequestToJson.convertToJson(req);
         assert jsonInputString != null;
